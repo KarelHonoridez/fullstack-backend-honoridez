@@ -6,14 +6,14 @@
     "password": "your_mysql_password",
     "database": "node_mysql_api"
   },
-  "secret": "SUPER_SECRET_KEY_REPLACE_ME_IN_PRODUCTION",
+  "secret": "ab14765cb97d3c285c7efd70ff8bc8258082745aec1cc60cd7dd0cc33d01b56d8e3ca7a7f237fa01",
   "emailFrom": "info@my-node-api.com",
   "smtpOptions": {
     "host": "smtp.ethereal.email",
     "port": 587,
     "auth": {
-      "user": "your_ethereal_user",
-      "pass": "your_ethereal_pass"
+      "user": "america.robel29@ethereal.email",
+      "pass": "wtQJPeMzu1DpeGDdE4"
     }
   }
 }

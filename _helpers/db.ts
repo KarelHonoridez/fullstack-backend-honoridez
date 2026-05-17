@@ -10,14 +10,12 @@ export default db;
 initialize();
 
 async function initialize() {
-    const { host, port, user, password, database } = config.database;
-    const connection = await mysql.createConnection({ host, port, user, password });
-
-    // Create DB if it doesn't exist
-    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`);
-
-    // Connect to DB
-    const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
+    // Use SQLite for development
+    const sequelize = new Sequelize({
+        dialect: 'sqlite',
+        storage: './database.sqlite',
+        logging: false
+    });
 
     // Init models
     db.Account = accountModel(sequelize);
@@ -29,4 +27,5 @@ async function initialize() {
 
     // Sync models with database
     await sequelize.sync();
+    console.log('Database initialized with SQLite');
 }

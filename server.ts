@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import errorHandler from './_middleware/error-handler';
 import accountsController from './accounts/accounts.controller';
-import swaggerDocs from './_helpers/swagger';
+// const swaggerDocs = require('./_helpers/swagger');
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(cors({ origin: (origin, callback) => callback(null, true), credentials: 
 app.use('/accounts', accountsController);
 
 // swagger docs route
-app.use('/api-docs', swaggerDocs);
+// app.use('/api-docs', swaggerDocs);
 
 // global error handler
 app.use(errorHandler);
