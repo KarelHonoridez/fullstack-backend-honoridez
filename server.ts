@@ -16,10 +16,20 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // configure cors requests dynamically based on CORS_ORIGIN environment variable
-const allowedOrigin = process.env.CORS_ORIGIN || 'http://localhost:4200';
+let allowedOrigin = (process.env.CORS_ORIGIN || 'http://localhost:4200').trim();
+if (allowedOrigin.endsWith('/')) {
+    allowedOrigin = allowedOrigin.slice(0, -1);
+}
+
 app.use(cors({
     origin: (origin, callback) => {
-        if (!origin || origin === allowedOrigin || process.env.NODE_ENV !== 'production') {
+        // Clean incoming origin of trailing slashes just in case
+        let cleanOrigin = origin ? origin.trim() : '';
+        if (cleanOrigin.endsWith('/')) {
+            cleanOrigin = cleanOrigin.slice(0, -1);
+        }
+
+        if (!origin || cleanOrigin === allowedOrigin || process.env.NODE_ENV !== 'production') {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS: ' + origin));
