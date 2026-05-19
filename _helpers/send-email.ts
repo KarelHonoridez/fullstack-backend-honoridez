@@ -2,9 +2,11 @@ import nodemailer from 'nodemailer';
 import config from '../config.json';
 
 export default async function sendEmail({ to, subject, html, from = process.env.EMAIL_FROM || config.emailFrom }: any) {
+    const port = parseInt(process.env.SMTP_PORT || '587');
     const smtpOptions = process.env.SMTP_HOST ? {
         host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT || '587'),
+        port: port,
+        secure: port === 465, // secure: true is required for SSL port 465
         auth: {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS
