@@ -47,5 +47,5 @@ async function initialize() {
 
     // Sync models with database
     await sequelize.sync();
-    console.log('Database initialized with SQLite');
+    console.log('Database synchronization complete.');
 }
