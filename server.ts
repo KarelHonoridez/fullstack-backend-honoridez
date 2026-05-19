@@ -1,3 +1,4 @@
+// Swagger reload trigger comment
 import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
