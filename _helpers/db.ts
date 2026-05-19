@@ -45,7 +45,7 @@ async function initialize() {
     db.Account.hasMany(db.RefreshToken, { onDelete: 'CASCADE' });
     db.RefreshToken.belongsTo(db.Account);
 
-    // Sync models with database (force-recreate to clear corrupt legacy rows)
-    await sequelize.sync({ force: true });
+    // Sync models with database
+    await sequelize.sync();
     console.log('Database synchronization complete.');
 }
