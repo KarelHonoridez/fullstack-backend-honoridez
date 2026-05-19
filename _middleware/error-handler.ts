@@ -11,6 +11,8 @@ export default function errorHandler(err: any, req: Request, res: Response, next
             // jwt authentication error
             return res.status(401).json({ message: 'Unauthorized' });
         default:
-            return res.status(500).json({ message: err.message });
+            // Log the unhandled error stack trace to the server logs
+            console.error('Unhandled Server Error:', err);
+            return res.status(500).json({ message: err.message || err });
     }
 }
