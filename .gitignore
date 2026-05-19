@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# Environment configurations
+.env
+config.json
+
+# Local SQLite databases
+*.sqlite
+database.sqlite
+
+# System and editor logs
+npm-debug.log*
+.vscode/
+.idea/
