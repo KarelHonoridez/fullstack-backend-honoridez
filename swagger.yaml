@@ -6,7 +6,7 @@ info:
 
 servers:
   - url: https://fullstack-backend-honoridez.onrender.com
-    description: Local development server
+    description: Production Server
 
 paths:
   /accounts/authenticate:
